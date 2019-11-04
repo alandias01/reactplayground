@@ -1,0 +1,23 @@
+commands
+npm -v
+npm install npm@latest -g
+
+See whats installed globally
+npm list -g --depth 0
+
+You dont want create-react-app installed globally so remove
+npm uninstall -g create-react-app
+
+npx create-react-app my-app --typescript
+
+Adding typescript to an existing create-react-app
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+Next, rename any file to be a TypeScript file (e.g. src/index.js to src/index.tsx)
+
+npm start
+{
+ Had issues starting, complained about webpack.  
+ npm uninstall -g webpack, Deleted c:\node_modules\webpack,
+ Delete package.json,
+ Deleted node_modules locally and ran npm install 
+}
