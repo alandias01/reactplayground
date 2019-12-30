@@ -1,0 +1,5 @@
+npm i webpack --save-dev
+npm i webpack-cli --save-dev
+npm i webpack-cli @webpack-cli/init
+
+npx webpack-cli init
