@@ -14,7 +14,7 @@ var buttonStyle = {
 const MAINTEMPLATE = {
     PAGE: {
         MAINPAGE: "main-page",
-        COUNTER: "tutorial-page",        
+        TUTORIAL: "tutorial-page",        
     }
 };
 
@@ -38,7 +38,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
             case MAINTEMPLATE.PAGE.MAINPAGE:
                 return <div>Main Page</div>
                 break;
-            case MAINTEMPLATE.PAGE.COUNTER:
+            case MAINTEMPLATE.PAGE.TUTORIAL:
                 return <Tutorial />
                 break;
             default:
@@ -58,7 +58,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                 Current Page: {this.state.currentPage}
                 <br />
                 <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.MAINPAGE)}>Main </button>
-                <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.COUNTER)}>Current</button>
+                <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.TUTORIAL)}>Current</button>
                 {this.getPage()}
             </div>
         )
