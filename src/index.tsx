@@ -32,6 +32,25 @@ ReactDOM.render(<MainApp />, document.getElementById('root'));
 
 //ReactDOM.render(<h1>test</h1>, document.getElementById('root'));
 
+/* importing
+
+FYI, a module can at most have 1 default export
+
+import * as abc from './pathToLibrary'  -> imports all exported items and puts under abc
+import abc from './pathToLibrary' -> the file has a default export and you give it a name of abc
+import {abc, def} from './pathToLibrary' ->the file has items abc and def as exports
+import * as abc from './pathToLibrary'
+
+import './index.css';  Importing CSS 
+
+
+*/
+/* SHORTCUTS
+
+
+
+*/
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

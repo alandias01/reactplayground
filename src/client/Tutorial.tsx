@@ -21,4 +21,5 @@ Show class
  ctor and setting state
  lifecycle hooks
  containers, components, actions, reducers
+ map, reduce, filter, etc...
 */
