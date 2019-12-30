@@ -1,10 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import * as serviceWorker from './serviceWorker';
+import MainApp from './client/MainApp'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<MainApp />, document.getElementById('root'));
+
+/**
+|--------------------------------------------------
+|ReactDOM.render(<h1>test</h1>
+    render takes reat elements
+    JSX converts down to React.createElement
+    JSX looks like HTML. <h1>test</h1> 
+    You can embed a JS Espression inside JSX by surrounding it with {} 
+    const name = 'Alan';
+    const Elem = <h1>Hello, {name}</h1>;
+    
+    When you write a react class, it is a component
+    Also, A JS function can define a component
+    A Component is a blueprint.  An element is an instance of the component
+    so when you use the component inside of JSX, it is an element
+
+|--------------------------------------------------
+*/
+
+// const name = 'Alan';
+// const Elem = <h1>Hello, {name}</h1>; //.render(Elem
+
+//let Elem = () => <h1>Arrow Func {"hi"}{name}</h1>    //.render(<Elem/>
+
+//ReactDOM.render(<h1>test</h1>, document.getElementById('root'));
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
