@@ -5,6 +5,9 @@ npm install npm@latest -g
 See whats installed globally
 npm list -g --depth 0
 
+To search for a package
+npm search <any keyword>
+
 You dont want create-react-app installed globally so remove
 npm uninstall -g create-react-app
 

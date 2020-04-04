@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import MainApp from './client/MainApp'
 
-ReactDOM.render(<MainApp />, document.getElementById('root'));
+
+const switcher = <BrowserRouter>
+    <ul><li><Link to="/main">Main</Link></li></ul>
+    <Switch>
+        <Route path="/main" component={MainApp}/>
+    </Switch>
+</BrowserRouter>;
+
+ReactDOM.render(switcher, document.getElementById('root'));
 
 /**
 |--------------------------------------------------

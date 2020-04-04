@@ -39,13 +39,13 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
         switch (this.state.currentPage) {
             case MAINTEMPLATE.PAGE.MAINPAGE:
                 return <div>Main Page</div>
-                break;
+                
             case MAINTEMPLATE.PAGE.TUTORIAL:
                 return <Tutorial />
-                break;
+                
             case MAINTEMPLATE.PAGE.LAYOUT01:
                 return <Layout01 />
-                break;
+                
             default:
                 break;
         }
