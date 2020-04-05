@@ -1,17 +1,12 @@
 commands
 npm -v
 npm install npm@latest -g
+npm list -g --depth 0   //See whats installed globally
+npm search <any keyword>    //To search for a package
 
-See whats installed globally
-npm list -g --depth 0
+npm uninstall -g create-react-app   //Remove create-react-app if previously installed globally
 
-To search for a package
-npm search <any keyword>
-
-You dont want create-react-app installed globally so remove
-npm uninstall -g create-react-app
-
-npx create-react-app my-app --typescript
+npx create-react-app myapp --template typescript
 
 Adding typescript to an existing create-react-app
 npm install --save typescript @types/node @types/react @types/react-dom @types/jest
@@ -24,3 +19,37 @@ npm start
  Delete package.json,
  Deleted node_modules locally and ran npm install 
 }
+
+Haven't tried
+npx create-react-app my-app --template redux-typescript
+
+npm i 
+@types/react-router-dom react-router-dom redux react-redux
+
+npm i -D
+redux-devtools
+
+Using bootstrap
+npm i bootstrap
+import 'bootstrap/dist/css/bootstrap.css';
+
+
+VSCODE EXTENSIONS
+ES7 React/Redux/GraphQL/React-Native snippets
+ESLint
+Debugger for Chrome
+Auto Import
+Prettier - Code formatter
+*goto settings->"editor.formatOnSave": true
+
+
+SHORTCUTS
+sst: this.setState({ })
+rcredux
+rxaction
+rxreducer
+cdm:	componentDidMount = () => { }
+cwun	componentWillUnmount = () => { }
+scu:	shouldComponentUpdate = (nextProps, nextState) => { }
+props:
+state
