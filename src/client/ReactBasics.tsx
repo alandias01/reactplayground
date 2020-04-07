@@ -7,14 +7,14 @@ import React, { Component, PureComponent } from 'react'
  * 
  */
 
-interface ITutorialProps { }
-interface ITutorialState {
+interface IReactBasicsProps { }
+interface IReactBasicsState {
     nm: string;
     textInput: string;
     label: string;
 }
 
-export class Tutorial extends Component<ITutorialProps, ITutorialState> {
+export class ReactBasics extends Component<IReactBasicsProps, IReactBasicsState> {
     num: number = 0;    //public by default
     name: string;    //must specify if you want private
     timerID: any;
@@ -108,7 +108,7 @@ export class Tutorial extends Component<ITutorialProps, ITutorialState> {
 
         return (
             <div>
-                Tutorial<br />
+                ReactBasics<br />
 
                 <button onClick={this.handleClick} >Get Value</button>
                 <input type="text" onChange={this.handleChange}></input>
@@ -116,7 +116,7 @@ export class Tutorial extends Component<ITutorialProps, ITutorialState> {
 
                 <Clock />
 
-                <TutorialSubComponent name={"From Parent"} myClick={this.handleLiftedState} />
+                <ReactBasicsSubComponent name={"From Parent"} myClick={this.handleLiftedState} />
             </div>
         )
     }
@@ -125,12 +125,12 @@ export class Tutorial extends Component<ITutorialProps, ITutorialState> {
 /* ? in interface means when using the component, the field is not required * 
  * This sub component shows how to use props and lift state up
  */
-interface ITutorialSubComponentProps {
+interface IReactBasicsSubComponentProps {
     name?: string,
     myClick?: (data: string) => void;
 }
 
-class TutorialSubComponent extends PureComponent<ITutorialSubComponentProps> {
+class ReactBasicsSubComponent extends PureComponent<IReactBasicsSubComponentProps> {
     data: string = "data";
 
     onMyClick = () => this.props.myClick && this.props.myClick(this.data);
@@ -181,6 +181,6 @@ class ClockSubClassToTestRenderingOfSubComponents extends PureComponent {
     }
 }
 
-export default Tutorial
+export default ReactBasics
 
 // map, reduce, filter, etc...

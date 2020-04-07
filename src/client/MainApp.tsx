@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tutorial from './Tutorial'
+import ReactBasics from './ReactBasics'
 import Layout01 from './layouts/Layout01'
 
 var mainAppStyle = {
@@ -15,7 +15,7 @@ var buttonStyle = {
 const MAINTEMPLATE = {
     PAGE: {
         MAINPAGE: "main-page",
-        TUTORIAL: "tutorial-page",
+        REACTBASICS: "react-basics",
         LAYOUT01: "Layout01"
     }
 };
@@ -39,13 +39,13 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
         switch (this.state.currentPage) {
             case MAINTEMPLATE.PAGE.MAINPAGE:
                 return <div>Main Page</div>
-                
-            case MAINTEMPLATE.PAGE.TUTORIAL:
-                return <Tutorial />
-                
+
+            case MAINTEMPLATE.PAGE.REACTBASICS:
+                return <ReactBasics />
+
             case MAINTEMPLATE.PAGE.LAYOUT01:
                 return <Layout01 />
-                
+
             default:
                 break;
         }
@@ -64,7 +64,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                     Current Page: {this.state.currentPage}
                     <br />
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.MAINPAGE)}>Main </button>
-                    <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.TUTORIAL)}>Tutorial</button>
+                    <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REACTBASICS)}>React Basics</button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.LAYOUT01)}>Layout01</button>
                 </div>
                 {this.getPage()}
