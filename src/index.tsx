@@ -2,16 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import MainApp from './client/MainApp'
+import { Provider } from 'react-redux'
+import configureStore from './client/redux/configureStore';
 
+const store = configureStore({});
 
-const switcher = <BrowserRouter>
-    <ul><li><Link to="/main">Main</Link></li></ul>
-    <Switch>
-        <Route path="/main" component={MainApp}/>
-    </Switch>
-</BrowserRouter>;
+const switcher =
+    <Provider store={store}>
+        <BrowserRouter>
+            <ul><li><Link to="/main">Main</Link></li></ul>
+            <Switch>
+                <Route path="/main" component={MainApp} />
+            </Switch>
+        </BrowserRouter>
+    </Provider>;
 
 ReactDOM.render(switcher, document.getElementById('root'));
 

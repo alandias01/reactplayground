@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactBasics from './ReactBasics'
 import Layout01 from './layouts/Layout01'
+import ReduxExample from './ReduxExample';
 
 var mainAppStyle = {
     background: "#eee",
@@ -16,7 +17,8 @@ const MAINTEMPLATE = {
     PAGE: {
         MAINPAGE: "main-page",
         REACTBASICS: "react-basics",
-        LAYOUT01: "Layout01"
+        LAYOUT01: "Layout01",
+        REDUXEXAMPLE: "REDUXEXAMPLE"
     }
 };
 
@@ -45,6 +47,8 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
 
             case MAINTEMPLATE.PAGE.LAYOUT01:
                 return <Layout01 />
+            case MAINTEMPLATE.PAGE.REDUXEXAMPLE:
+                return <ReduxExample />
 
             default:
                 break;
@@ -66,6 +70,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.MAINPAGE)}>Main </button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REACTBASICS)}>React Basics</button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.LAYOUT01)}>Layout01</button>
+                    <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REDUXEXAMPLE)}>Redux Example</button>
                 </div>
                 {this.getPage()}
             </div>
