@@ -24,7 +24,7 @@ Haven't tried
 npx create-react-app my-app --template redux-typescript
 
 npm i 
-@types/react-router-dom react-router-dom redux react-redux
+@types/react-router-dom react-router-dom redux react-redux @types/react-redux immer
 
 npm i -D
 redux-devtools
