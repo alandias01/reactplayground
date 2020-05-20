@@ -12,8 +12,8 @@ const store = configureStore({});
 const switcher =
     <Provider store={store}>
         <BrowserRouter>
-            <ul><li><Link to="/main">Main</Link></li></ul>
             <Switch>
+                <Route path="/" component={MainApp} />
                 <Route path="/main" component={MainApp} />
             </Switch>
         </BrowserRouter>

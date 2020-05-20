@@ -6,7 +6,7 @@ import ReduxExample from './ReduxExample';
 var mainAppStyle = {
     background: "#eee",
     padding: "20px",
-    margin: "0px 0px 10px 0px"
+    margin: "0px 0px 0px 0px"
 };
 
 var buttonStyle = {
@@ -64,7 +64,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
     render() {
         return (
             <div>
-                <div style={mainAppStyle}>
+                <div >
                     Current Page: {this.state.currentPage}
                     <br />
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.MAINPAGE)}>Main </button>
