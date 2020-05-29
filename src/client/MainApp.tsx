@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactBasics from './ReactBasics'
 import Layout01 from './layouts/Layout01'
 import ReduxExample from './ReduxExample';
+import MaterialUIComponent from './materialui/MaterialuiBasics';
+import { MUITheming } from './materialui/MUITheming';
 
 var mainAppStyle = {
     background: "#eee",
@@ -13,12 +15,14 @@ var buttonStyle = {
     margin: "5px 5px 5px 5px"
 }
 
-const MAINTEMPLATE = {
+export const MAINTEMPLATE = {
     PAGE: {
         MAINPAGE: "main-page",
         REACTBASICS: "react-basics",
         LAYOUT01: "Layout01",
-        REDUXEXAMPLE: "REDUXEXAMPLE"
+        REDUXEXAMPLE: "REDUXEXAMPLE",
+        MATERIALUI: "MATERIALUI",
+        MUITHEMING: "MUITHEMING"
     }
 };
 
@@ -49,7 +53,10 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                 return <Layout01 />
             case MAINTEMPLATE.PAGE.REDUXEXAMPLE:
                 return <ReduxExample />
-
+            case MAINTEMPLATE.PAGE.MATERIALUI:
+                return <MaterialUIComponent setCurrentPage={this.setCurrentPage} />
+            case MAINTEMPLATE.PAGE.MUITHEMING:
+                return <MUITheming />
             default:
                 break;
         }
@@ -71,6 +78,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REACTBASICS)}>React Basics</button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.LAYOUT01)}>Layout01</button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REDUXEXAMPLE)}>Redux Example</button>
+                    <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.MATERIALUI)}>Material UI</button>
                 </div>
                 {this.getPage()}
             </div>
