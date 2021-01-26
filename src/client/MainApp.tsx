@@ -4,6 +4,7 @@ import Layout01 from './layouts/Layout01'
 import ReduxExample from './ReduxExample';
 import MaterialUIComponent from './materialui/MaterialuiBasics';
 import { MUITheming } from './materialui/MUITheming';
+import { ReactHooks } from './hooks/ReactHookBase';
 
 var mainAppStyle = {
     background: "#eee",
@@ -22,7 +23,8 @@ export const MAINTEMPLATE = {
         LAYOUT01: "Layout01",
         REDUXEXAMPLE: "REDUXEXAMPLE",
         MATERIALUI: "MATERIALUI",
-        MUITHEMING: "MUITHEMING"
+        MUITHEMING: "MUITHEMING",
+        REACTHOOKS: "react-hooks",
     }
 };
 
@@ -57,6 +59,9 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                 return <MaterialUIComponent setCurrentPage={this.setCurrentPage} />
             case MAINTEMPLATE.PAGE.MUITHEMING:
                 return <MUITheming />
+            case MAINTEMPLATE.PAGE.REACTHOOKS:
+                return <ReactHooks />
+
             default:
                 break;
         }
@@ -79,6 +84,7 @@ export class MainApp extends Component<IMainAppProps, IMainAppState> {
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.LAYOUT01)}>Layout01</button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REDUXEXAMPLE)}>Redux Example</button>
                     <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.MATERIALUI)}>Material UI</button>
+                    <button style={buttonStyle} onClick={() => this.setCurrentPage(MAINTEMPLATE.PAGE.REACTHOOKS)}>React Hooks</button>
                 </div>
                 {this.getPage()}
             </div>
