@@ -7,8 +7,9 @@
 export const TaskDelay = <T extends {}>(
   timeToDelay: number,
   data: T = {} as T,
-  shouldResolve = true
+  shouldResolve = true,
+  error = new Error("Default Error")
 ): Promise<T> =>
   new Promise((res, rej) =>
-    setTimeout(() => (shouldResolve ? res(data) : rej()), timeToDelay)
+    setTimeout(() => (shouldResolve ? res(data) : rej(error)), timeToDelay)
   );
