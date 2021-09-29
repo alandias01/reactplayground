@@ -1,5 +1,5 @@
 import { parse } from 'path';
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState, useCallback } from 'react'
 import { TaskDelay } from '../../util/util';
 
 export function UseMemoHook() {
@@ -10,9 +10,13 @@ export function UseMemoHook() {
       UseMemo01
       <UseMemo01 />
       <br /><br />
+      <App />
+      <br /><br />
     </div>
   )
 }
+
+/****************************************** UseMemo01 ******************************************************/
 
 /*When we click the increment, slow number goes up but there is delay
   When we change theme, there is also delay bc it causes a rerender and slow function has
@@ -55,4 +59,34 @@ function slowFunction(num: number) {
   for (let i = 0; i < 1000000000; i++) { }
   return num + 2;
 }
+/****************************************** UseMemo01 END***************************************************/
 
+/****************************************** React memo *****************************************************/
+//Typing into the textbox causes the App component to rerender, which forces child components to rerender.  How de we prevent this?
+const App = () => {
+  console.log("App rerendered")
+  const [users, setUsers] = useState([{ id: 0, name: "Alan" }, { id: 1, name: "Balan" }, { id: 2, name: "Talan" }]);
+  const [text, setText] = useState("");
+  const handleRemoveUser = useCallback((id: number) => setUsers(u => u.filter(x => x.id !== id)), []);
+
+  return (
+    <div>
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+      <br />
+      {text}
+      <List users={users} removeUser={handleRemoveUser} />
+    </div>
+  );
+}
+
+//Wrapping this in React.memo prevents a rerender since users doesn't change
+//But App recreates handleRemoveUser on each rerender so we use useCallback to return same reference
+const List = React.memo(({ users, removeUser }: { users: { id: number, name: string }[], removeUser: (id: number) => void }) => {
+  console.log("List rerendered")
+
+  return (<div>
+    {users.map(x => (<div key={x.id}>{x.name} <button onClick={() => removeUser(x.id)}>Remove</button> </div>))}
+  </div>);
+});
+
+/****************************************** React memo END**************************************************/
