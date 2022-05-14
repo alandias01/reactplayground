@@ -7,17 +7,17 @@ import MainApp from './client/MainApp'
 import { Provider } from 'react-redux'
 import configureStore from './client/redux/configureStore';
 
-const store = configureStore({});
+// const store = configureStore({});
 
 const switcher =
-    <Provider store={store}>
-        <BrowserRouter>
-            <Switch>
-                <Route path="/" component={MainApp} />
-                <Route path="/main" component={MainApp} />
-            </Switch>
-        </BrowserRouter>
-    </Provider>;
+    // <Provider store={store}>
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" component={MainApp} />
+            <Route path="/main" component={MainApp} />
+        </Switch>
+    </BrowserRouter>
+// </Provider>;
 
 ReactDOM.render(switcher, document.getElementById('root'));
 
