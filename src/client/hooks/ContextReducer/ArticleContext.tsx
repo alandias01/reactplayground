@@ -31,7 +31,7 @@ function ArticleReducer(prevState: IFetchDataState, action: IAction): IFetchData
 
 const ArticleContext = createContext({ articles: fetchDataInitialState, dispatchArticles: (article: IAction) => { } });
 
-export function ArticleContextProvider({ children }) {
+export function ArticleContextProvider({ children }: { children: React.ReactNode }) {
   const [articles, dispatchArticles] = useReducer(ArticleReducer, fetchDataInitialState);
   return (
     <div>

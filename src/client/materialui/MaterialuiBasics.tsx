@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { AppBar, Toolbar, IconButton, Typography, Button, Grid, makeStyles, CircularProgress, Divider, Chip, Theme, Card, CardContent, CardActions, CardActionArea, CardHeader, CardMedia, Drawer, List, ListItem, ListItemIcon, ListItemText, Paper } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Inbox, Mail, ChevronLeft } from '@material-ui/icons';
-import { MAINTEMPLATE } from '../MainApp';
 
 //To change theme
 import { createMuiTheme } from '@material-ui/core'
@@ -24,7 +23,6 @@ export default function MaterialUIBasics({ setCurrentPage }: MUIThemingProps) {
             <ThemeProvider theme={theme}>
                 <TopBar setDrawerOpen={setDrawerOpen} />
                 <MyDrawer drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
-                <Button onClick={() => setCurrentPage(MAINTEMPLATE.PAGE.MUITHEMING)}>MUI Theming</Button>
                 <LoadingComponent />
                 <ShowChips />
                 <CardComponent />
@@ -44,7 +42,7 @@ function LoadingComponent() {
         <div>
             <Button onClick={() => setLoading(x => !x)}>Toggle Loading</Button>
             <br />
-            { loading && <CircularProgress />}
+            {loading && <CircularProgress />}
         </div >
     )
 }
@@ -111,7 +109,7 @@ function TopBar(props: { setDrawerOpen: (val: boolean) => void }) {
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
                     News
-          </Typography>
+                </Typography>
                 <Button color="inherit">Login</Button>
             </Toolbar>
         </AppBar>

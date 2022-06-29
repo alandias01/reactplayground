@@ -11,7 +11,7 @@ export function UseContextHook() {
       <UseContext1 />
       <br /><br />
       UseContext2
-      <UseContext2 />
+      {/* <UseContext2 /> */}
       <br /><br />
       UseContextReducer
       <UseContextReducer />
@@ -34,7 +34,7 @@ export const UserContext = createContext(UserContextStateDefaultValue);
 
 //import {UserContext} from "./UserContext";
 function UseContext1() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<UserContextState>({ id: 1, username: "" });
   //const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
@@ -120,7 +120,7 @@ const defaultArticles = {
 }
 const ArticleContext = React.createContext(defaultArticles);
 
-function ArticleProvider({ children }) {
+function ArticleProvider({ children }: { children: React.ReactNode }) {
   const [articles, setArticles] = useState<ArticlesType>(defaultArticles.articles);
 
   return (
@@ -131,7 +131,7 @@ function ArticleProvider({ children }) {
     </div>
   );
 }
-
+/*
 //AddArticle.ts
 function AddArticle() {
   const { setArticles } = useContext(ArticleContext);
@@ -139,7 +139,7 @@ function AddArticle() {
 
   const SaveArticle = () => {
     const id = Math.floor(Math.random() * 10000);
-    setArticles((x: ArticlesType) => ({ ...x, data: [...x.data, { id, title }] }));
+    setArticles((x) => ({ ...x, data: [...x.data] }));
   }
 
   return (
@@ -168,4 +168,5 @@ function UseContext2() {
     </div>
   );
 }
+*/
 /****************************************** UseContext2 END ************************************************/

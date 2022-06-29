@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useReducer, useEffect, Dispatch, SetStateAction } from "react";
 import { TaskDelay } from "../../util/util";
 
 export function UseReducerHook() {
@@ -91,17 +91,22 @@ function UseReducerIncrement01() {
 
  */
 
+interface IIncrementDependsOnMultipleState {
+  count: number;
+  step: number;
+}
+
 const IncrementDependsOnMultipleStateInitialState = {
   count: 0,
   step: 1,
 };
 
-function IncrementDependsOnMultipleStateReducer(state, action) {
+function IncrementDependsOnMultipleStateReducer(state: IIncrementDependsOnMultipleState, action: IAction) {
   const { count, step } = state;
   if (action.type === 'tick') {
     return { count: count + step, step };
   } else if (action.type === 'step') {
-    return { count, step: action.step };
+    return { count, step: action.payload.step };
   } else {
     throw new Error();
   }
@@ -128,7 +133,7 @@ function UseReducerIncrementDependsOnMultipleState() {
     <div>
       count: {count}
       <button onClick={() => setStart(x => !x)}>Start, currently: {start.toString()}</button>
-      <input type="number" value={step} onChange={e => dispatch({ type: 'step', step: Number(e.target.value) })} />
+      <input type="number" value={step} onChange={e => dispatch({ type: 'step', payload: { step: Number(e.target.value) } })} />
     </div>
   );
 }
@@ -151,13 +156,13 @@ function UseReducerStateDependsOnPropsWrapper() {
   );
 }
 
-function UseReducerStateDependsOnProps({ step }) {
+function UseReducerStateDependsOnProps({ step }: { step: number }) {
   const [count, dispatch] = useReducer(reducer, 0);
   const [start, setStart] = useState(false);
 
   console.log(`UseReducerStateDependsOnProps main count: ${count} step: ${step}`)
 
-  function reducer(state, action) {
+  function reducer(state: number, action: IAction) {
     if (action.type === 'tick') {
       return state + step;
     } else {
@@ -212,7 +217,7 @@ function UseReducerFetchData() {
 
   const [state, dispatch] = useReducer(fetchDataReducer, fetchDataInitialState);
 
-  const getData = async (isGood: bool = true) => {
+  const getData = async (isGood: boolean = true) => {
     try {
       dispatch({ type: FetchDataAction.REQUEST });
       let data;
@@ -247,10 +252,10 @@ function UseReducerFetchData() {
 //Inside your custom hook, you should have data source url which you can let user set and result data variable which you return
 //Custom hook Should return the data results, isLoading, isError, and a function to set the data source url
 
-function useCustomDataFetchHook(urlInitialState: string, fetchDataInitialState: IFetchDataState) {
+function useCustomDataFetchHook(urlInitialState: string, fetchDataInitialState: IFetchDataState): [IFetchDataState, (url: string, isGood?: boolean) => void] {
   const [state, dispatch] = useReducer(fetchDataReducer, fetchDataInitialState);
 
-  const getData = async (url: string, isGood: bool = true) => {
+  const getData = async (url: string, isGood: boolean = true) => {
     try {
       dispatch({ type: FetchDataAction.REQUEST });
       let data;
@@ -287,7 +292,7 @@ function UseReducerFetchDataCustomHook() {
 
 /** This version uses useEffect with a url */
 
-function useCustomDataFetchHookUseEffect(urlInitialState: string, fetchDataInitialState: IFetchDataState) {
+function useCustomDataFetchHookUseEffect(urlInitialState: string, fetchDataInitialState: IFetchDataState): [IFetchDataState, Dispatch<SetStateAction<string>>] {
   const [url, setUrl] = useState(urlInitialState);
   const [state, dispatch] = useReducer(fetchDataReducer, fetchDataInitialState)
 
