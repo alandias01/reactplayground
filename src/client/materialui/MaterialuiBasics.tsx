@@ -13,9 +13,9 @@ const theme = createMuiTheme({
     }
 });
 
-type MUIThemingProps = { setCurrentPage: (page: string) => void }
 
-export default function MaterialUIBasics({ setCurrentPage }: MUIThemingProps) {
+
+export function MaterialUIBasics() {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     return (
