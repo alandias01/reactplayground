@@ -1,0 +1,15 @@
+@media (min-width: 800px){
+  .responsivetopmenu{
+    display: none;    
+  }
+}
+
+@media (max-width: 800px){
+  .responsivesidemenu{
+    display: none
+  }
+}
+
+.MuiToolbar-root{
+  min-height:30px;
+}
