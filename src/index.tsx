@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
-import MainApp from './client/MainApp'
+import { Playground } from './client/Playground';
 import { Provider } from 'react-redux'
 import configureStore from './client/redux/configureStore';
 
@@ -13,8 +13,8 @@ const switcher =
     // <Provider store={store}>
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={MainApp} />
-            <Route path="/main" component={MainApp} />
+            <Route path="/" component={Playground} />
+            <Route path="/main" component={Playground} />
         </Switch>
     </BrowserRouter>
 // </Provider>;
