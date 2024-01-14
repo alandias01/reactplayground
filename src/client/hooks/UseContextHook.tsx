@@ -1,5 +1,7 @@
 import React, { useState, createContext, useContext } from "react";
-import { UseContextReducer } from './ContextReducer/UseContextReducer';
+import { StockContextProvider } from './Context/StockContext'
+import { StockSetContext } from './Context/StockSetContext'
+import { StockGetContext } from './Context/StockGetContext'
 
 export function UseContextHook() {
   return (
@@ -10,11 +12,15 @@ export function UseContextHook() {
       <UseContext1 />
       <br /><br />
       UseContext2
-      {/* <UseContext2 /> */}
+      <StockContextProvider>
+        <br />
+        <StockSetContext />
+        <br />
+        <StockGetContext />
+      </StockContextProvider>
       <br /><br />
-      UseContextReducer
-      <UseContextReducer />
-      <br />
+
+
     </div>
   )
 }
@@ -87,85 +93,5 @@ function ContextHookB() {
 /****************************************** UseContext1 END ************************************************/
 
 /****************************************** UseContext2 ****************************************************/
-/*
-ArticleContext
-App where you wrap comonents that use context
-AddArticle:Has forms and a way to take in an article to insert
-ShowSrticles
- */
 
-//ArticleContext.ts
-
-interface IArticle {
-  id: number;
-  title: string;
-}
-
-type ArticlesType = {
-  data: IArticle[],
-  isLoading: boolean,
-  isSuccess: boolean,
-  isError: boolean
-}
-
-const defaultArticles = {
-  articles: {
-    data: [{ id: 0, title: "Test" }],
-    isLoading: false,
-    isSuccess: false,
-    isError: false
-  },
-  setArticles: (articles: ArticlesType) => { }
-}
-const ArticleContext = React.createContext(defaultArticles);
-
-function ArticleProvider({ children }: { children: React.ReactNode }) {
-  const [articles, setArticles] = useState<ArticlesType>(defaultArticles.articles);
-
-  return (
-    <div>
-      <ArticleContext.Provider value={{ articles, setArticles }} >
-        {children}
-      </ArticleContext.Provider>
-    </div>
-  );
-}
-/*
-//AddArticle.ts
-function AddArticle() {
-  const { setArticles } = useContext(ArticleContext);
-  const [title, setTitle] = useState("");
-
-  const SaveArticle = () => {
-    const id = Math.floor(Math.random() * 10000);
-    setArticles((x) => ({ ...x, data: [...x.data] }));
-  }
-
-  return (
-    <div>
-      <form>
-        <TextField type="text" label="Title" onChange={(e) => setTitle(e.target.value)} />
-        <Button variant="outlined" onClick={SaveArticle} >Add</Button>
-      </form>
-    </div>
-  );
-}
-
-//ShowArticles.ts
-function ShowArticles() {
-  const { articles } = useContext(ArticleContext);
-  return <div>{articles.data.map(x => <div key={x.id}>{x.id}: {x.title}</div>)}</div>
-}
-
-function UseContext2() {
-  return (
-    <div>
-      <ArticleProvider>
-        <AddArticle />
-        <ShowArticles />
-      </ArticleProvider>
-    </div>
-  );
-}
-*/
 /****************************************** UseContext2 END ************************************************/
