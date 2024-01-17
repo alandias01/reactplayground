@@ -47,7 +47,12 @@ const Parent = () => {
 }
 
 
-export const Child = React.memo(({ counter, updatecounter, arr }) => {
+interface IChildProps {
+  counter: number;
+
+}
+
+function Child(counter: number, updatecounter: () => void, arr: number[]) {
   // let loopCtr = 0;
   // for (let i = 0; i < 500_000_000; i++) loopCtr++;
 
@@ -66,7 +71,9 @@ export const Child = React.memo(({ counter, updatecounter, arr }) => {
     </div>
   )
 
-}, (a, b) => JSON.stringify(a) === JSON.stringify(b));
+};
+
+// , (a, b) => JSON.stringify(a) === JSON.stringify(b)
 
 /*************************************** Optimizing rerenders END **********************/
 
