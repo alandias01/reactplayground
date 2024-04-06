@@ -7,12 +7,37 @@ import React, { Component, PureComponent } from 'react'
  * 
  */
 
-interface IReactBasicsProps { }
+interface IReactBasicsProps { p1: string }
 interface IReactBasicsState {
     nm: string;
     textInput: string;
     label: string;
 }
+
+// FC type is an alias for FunctionComponent
+// If no props, React.FC<{}>
+export const ReactFCProps: React.FC<IReactBasicsProps> = (props) => {
+    return (
+        <div>
+            {props.children}
+            {props.p1}
+        </div>);
+}
+
+export const ReactPropsWithChildren = ({ children, p1 }: React.PropsWithChildren<IReactBasicsProps>) => {
+    return (
+        <div>
+            {children}
+        </div>);
+}
+
+export const ReactOnlyChildrenProp = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <div>
+            {children}
+        </div>);
+}
+
 
 export class ReactBasics extends Component<IReactBasicsProps, IReactBasicsState> {
     num: number = 0;    //public by default
